@@ -1,0 +1,83 @@
+基底関数$\Phi(x)$は基底$\phi_0(x)=1,
+\phi_1(x)=x$を用いて、$\Phi(x)=\{\phi_0(x),
+\phi_1(x)\}^T$と表せる。また、${\bf{w}}=\{w_0, w_1\}^T$である。
+
+$n$番目のデータ点についての尤度関数は
+
+$p(y_n|x_n,{\bf{w}},\beta) = \sqrt{ \frac{\beta}{2\pi}}
+exp(-\frac{\beta}{2}(y_n-y(x_n;{\bf{w}}))^2)$
+
+$= \sqrt{ \frac{\beta}{2\pi}}
+exp(-\frac{\beta}{2}(y_n-{\bf{w}}^T\Phi(x_n))^2)$
+
+$= \mathcal{N}(y_n|{\bf{w}}^T\Phi(x_n), \beta)$
+
+
+となる。
+
+\subsection{その２-２}
+
+尤度関数$L({\bf{w}},\beta)$は
+
+$L({\bf{w}},\beta) = \Pi_{n=1}^{N}\sqrt{ \frac{\beta}{2\pi}}
+exp(-\frac{\beta}{2}(y_n-{\bf{w}}^T\Phi(x_n))^2)$
+
+となる。また、尤度関数の対数をとると、
+
+$ln L({\bf{w}},\beta) = ln(\Pi_{n=1}^{N}\sqrt{ \frac{\beta}{2\pi}}
+exp(-\frac{\beta}{2}(y_n-{\bf{w}}^T\Phi(x_n))^2))$
+
+$= \frac{N}{2} ln \left(\frac{\beta}{2\pi} \right) -\frac{\beta}{2}
+\sum_{n=1}^{N}(y_n-{\bf{w}}^T\Phi(x_n))^2$
+
+となる。
+
+\subsection{その２-３}
+
+$\bigtriangledown lnL({\bf{w}}, \beta) =
+0$より、${\bf{w}}$について、$\frac{\partial lnL({\bf{w}},\beta)}{\partial
+{\bf{w}}}=0$を用いると、
+
+$\frac{\partial }{\partial {\bf{w}}}\left(\frac{N}{2} ln
+\left(\frac{\beta}{2\pi} \right) -\frac{\beta}{2}
+\sum_{n=1}^{N}(y_n-{\bf{w}}^T\Phi(x_n))^2\right)=0$
+
+$\frac{\partial }{\partial {\bf{w}}}\left(\sum_{n=1}^{N}(y_n^2
+-2y_n{\bf{w}}^T\Phi(x_n) + ({\bf{w}}^T\Phi(x))^2)\right)=0$
+
+$\sum_{n=1}^{N}y_n\Phi(x)-\left(
+\sum_{n=1}^{N}\Phi(x_n)^T\Phi(x_n)\right){\bf{w}} = 0$
+
+ここで、基底関数を計画行列$\Phi$は、
+
+$
+\Phi = 
+\begin{pmatrix}
+\phi_0(x_1) & \phi_1(x_1) 
+\vdots & \vdots
+\phi_0(x_n) & \phi_1(x_n) 
+\end{pmatrix}
+$
+
+であり、${\bf{y}} = \{y_1, ... ,
+y_n\}^T$とし、計画行列を用いて${\bf{w}}$を求めると、
+
+$\Phi^T \Phi {\bf{w}} = \Phi^T {\bf y}$
+
+${{\bf{w}}}=(\Phi^T\Phi)^{-1} \Phi^T\bf{y}$
+
+次に、勾配が0になる$w_{ML}$を用いて、$\frac{\partial
+lnL({\bf{w}},\beta)}{\partial {\bf{\beta}}}=0$となる$\beta_{ML}$を求めると,
+
+$\frac{\partial }{\partial {\bf{\beta}}}\left(\frac{N}{2} ln
+\left(\frac{2\pi}{\beta} \right) -\frac{\beta}{2}
+\sum_{n=1}^{N}(y_n-{\bf{w_{ML}}}^T\Phi(x_n))^2)\right)=0$
+
+$\frac{N}{2} \left(\frac{\beta}{2\pi}\frac{2\pi}{\beta^2} \right) -\frac{1}{2}
+\sum_{n=1}^{N}(y_n-{\bf{w_{ML}}}^T\Phi(x_n))^2)=0$
+
+$\beta^{-1} = \frac{1}{N} \sum_{n=1}^{N}(y_n-{\bf{w_{ML}}}^T\Phi(x_n))^2)$
+
+$\beta^{-1} = \frac{1}{N}||{\bf{y}}-\Phi{\bf{w_{ML}}}||^2$
+
+以上より、勾配が０となる${\bf{w_{ML}}}, \beta_{ML}$が求められる。
