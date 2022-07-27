@@ -1,5 +1,5 @@
 import keras
-from kerasmodels import Sequential
+from keras.models import Sequential
 from keras.layers import Dense, Activation, LSTM
 from keras.optimizers import Adam
 import tensorflow as tf

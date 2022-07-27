@@ -3,7 +3,7 @@ from .libs.make_dataset import *
 from sklearn.model_selection import train_test_split
 
 if __name__=="__main__":
-    filepath = '../datas/AirPassengers.csv'
+    filepath = './datas/AirPassengers.csv'
     data = pd.read_csv(filepath)
     data.head()
 
