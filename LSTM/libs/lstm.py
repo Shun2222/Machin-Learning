@@ -1,7 +1,7 @@
 import keras
-from keras.models import Sequential
-from keras.layers import Dense, Activation, LSTM
-from keras.optimizers import Adam
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Activation, LSTM
+from tensorflow.keras.optimizers import Adam
 import tensorflow as tf
 import numpy as np
 import pandas as pd
@@ -39,7 +39,7 @@ def learn(model, x_train, y_train, x_test, y_test, batch_size=20, n_epoch=150):
     plt.legend()
     plt.show()
 
-def future(model, x, pred_length, window_size=12, gridline_space=12):
+def future(model, x, pred_length, norm_scale, window_size=12, gridline_space=12):
     future_pred = x[:, 0, 0].copy()
     for tmp in range(pred_length):
         x_future_pred = future_pred[-1*window_size:]

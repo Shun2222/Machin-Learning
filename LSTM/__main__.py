@@ -48,5 +48,5 @@ if __name__=="__main__":
     plt.grid()
     plt.show()
 
-    future(model, x, 12*3)
+    future(model, x, 12*3, norm_scale)
     
