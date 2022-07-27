@@ -39,7 +39,7 @@ def learn(model, x_train, y_train, x_test, y_test, batch_size=20, n_epoch=150):
     plt.legend()
     plt.show()
 
-def future(model, x, pred_length, window_size=12, gridline_space=12):
+def future(model, x, pred_length, norm_scale, window_size=12, gridline_space=12):
     future_pred = x[:, 0, 0].copy()
     for tmp in range(pred_length):
         x_future_pred = future_pred[-1*window_size:]
