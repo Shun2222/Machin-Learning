@@ -25,11 +25,11 @@ if __name__=="__main__":
     
     batch_size = 20
     n_epoch = 150
-    learn(model, x_train, y_train, batch_size, n_epoch)
+    learn(model, x_train, y_train, x_test, y_test, batch_size, n_epoch)
 
     # 予測
-    y_pred_train = lstm_model.predict(X_train)
-    y_pred_test = lstm_model.predict(X_test)
+    y_pred_train = model.predict(x_train)
+    y_pred_test = model.predict(x_test)
     
     # RMSEで評価
     # 参考：https://deepage.net/deep_learning/2016/09/17/tflearn_rnn.html
@@ -40,13 +40,13 @@ if __name__=="__main__":
     print("  test : " , rmse(y_pred_test, y_test))
     
     # 推定結果のプロット
-    plt.plot(X[:, 0, 0], color='blue',  label="observed")  # 元データ
+    plt.plot(x[:, 0, 0], color='blue',  label="observed")  # 元データ
     plt.plot(y_pred_train, color='red',  label="train")   # 予測値（学習）
-    plt.plot(range(len(X_train),len(X_test)+len(X_train)),y_pred_test, color='green',  label="test")   # 予測値（検証）
+    plt.plot(range(len(x_train),len(x_test)+len(x_train)),y_pred_test, color='green',  label="test")
     plt.legend()
     plt.xticks(np.arange(0, 145, 12)) # 12ヶ月ごとにグリッド線を表示
     plt.grid()
     plt.show()
 
-    future(model, x)
+    future(model, x, 12*3)
     
