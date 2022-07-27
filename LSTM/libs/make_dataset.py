@@ -1,6 +1,6 @@
 import numpy as np
 
-def make_data(low_data, max_len):
+def make_dataset(low_data, max_len):
     data, target = [], []
     for i in range(len(low_data)-max_len):
         data.append(low_data[i:i+max_len])
